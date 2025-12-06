@@ -1,66 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
-import * as nodemailer from "nodemailer";
-
-// Funzione helper per validare i dati
-function validate(data: any) {
-  if (!data) return "Nessun dato ricevuto";
-  if (!data.email) return "Email mancante";
-  if (!data.name) return "Nome mancante";
-  return null;
-}
+import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const { email } = await req.json();
 
-    // Validazione
-    const error = validate(body);
-    if (error) {
-      return NextResponse.json(
-        { success: false, error },
-        { status: 400 }
-      );
+    if (!email) {
+      return NextResponse.json({ success: false, error: "Email mancante" });
     }
 
-    // Config transport — FUNZIONA SU VERCEL
+    // 🔥 CONFIGURAZIONE CORRETTA PER VERCEL + GMAIL
     const transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: Number(process.env.MAIL_PORT),
-      secure: false,
+      host: process.env.EMAIL_HOST,          // smtp.gmail.com
+      port: Number(process.env.EMAIL_PORT),  // 465
+      secure: true,                           // Gmail richiede secure su porta 465
       auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
+        user: process.env.EMAIL_USER,        // tua email Gmail
+        pass: process.env.EMAIL_PASS,        // App Password
       },
     });
 
-    // Email da inviare
-    const mailOptions = {
-      from: `"HeroTrip Register" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO,  // dove ti arrivano le iscrizioni
-      subject: "Nuova registrazione HeroTrip",
-      text: `
-Nuovo utente registrato:
-
-Nome: ${body.name}
-Email: ${body.email}
+    // 🔥 INVIO EMAIL
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Registrazione completata",
+      html: `
+        <h2>Benvenuto su HeroTRiP!</h2>
+        <p>La tua registrazione è avvenuta con successo.</p>
       `,
-    };
+    });
 
-    // Invia email
-    await transporter.sendMail(mailOptions);
-
-    return NextResponse.json(
-      { success: true, message: "Registrazione inviata correttamente" },
-      { status: 200 }
-    );
-
-  } catch (err: any) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: err.message || "Errore interno durante la registrazione",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error("❌ Errore Nodemailer:", error);
+    return NextResponse.json({ success: false, error: error.message });
   }
 }
