@@ -1,16 +1,23 @@
 {
   "matches": [
     {
-      "Data": "2025-12-06",
-	  "home": "Inter",
-      "away": "Como",
-      "Prediction": "1",
-      "Tip": "quota bassa, scegliere con cura e magari giocare una multipla"
+      "Data": "2025-12-13",
+	  "home": "Ingolstadt",
+      "away": "Monaco 1860",
+      "Prediction": "2",
+      "Tip": "ottima quota"
     },
 	{
-      "Data": "2025-12-07",
-	  "home": "Elche",
-      "away": "Girona",
+      "Data": "2025-12-13",
+	  "home": "Cercle Brugge",
+      "away": "KV Mechelen",
+      "Prediction": "2",
+      "Tip": "ottima quota"
+    },
+	{
+      "Data": "2025-12-14",
+	  "home": "Vanspor FK",
+      "away": "Umraniyespor",
       "Prediction": "2",
       "Tip": "ottima quota"
     }
