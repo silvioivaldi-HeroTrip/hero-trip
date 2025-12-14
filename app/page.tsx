@@ -2,197 +2,184 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function HomePage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-[#0e1428] text-white">
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="border-b border-slate-800 bg-slate-950/80">
-        <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="space-y-6">
-            <h1 className="text-4xl font-extrabold tracking-tight text-center text-amber-400 sm:text-5xl">
-              HeroTRiP — Pre-match GeniusTip
-            </h1>
+        <div className="mx-auto max-w-4xl px-4 py-12 space-y-6 text-center">
+          <h1 className="text-4xl font-extrabold text-amber-400 sm:text-5xl">
+            HeroTRiP
+          </h1>
 
-            <p className="text-center text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-              Il primo servizio di pronostici focalizzato sulle partite asimmetriche,
-              inattese, da quota golosa:{" "}
-              <span className="text-amber-300 font-semibold">
-                i veri cigni neri del betting.
-              </span>
-            </p>
+          <p className="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+            Analizziamo centinaia di partite.
+            <br />
+            Ne selezioniamo pochissime.
+            <br />
+            Rendiamo il processo verificabile.
+          </p>
 
-            <div className="flex justify-center mt-6">
-              <Image
-                src="/images/landingpage.png"
-                alt="HeroTRiP"
-                width={400}
-                height={400}
-                className="drop-shadow-lg"
-              />
-            </div>
+          <Image
+            src="/images/landingpage.png"
+            alt="HeroTRiP"
+            width={360}
+            height={360}
+            className="mx-auto drop-shadow-lg"
+          />
 
-            <div className="flex justify-center">
-              <Link
-                href="/register"
-                className="px-6 py-3 rounded-xl bg-amber-400 text-black font-semibold hover:bg-amber-300 transition"
-              >
-                Iscriviti per un mese
-              </Link>
-            </div>
-
-            <p className="text-center mt-4 text-slate-400 text-sm">
-              Già registrato?{" "}
-              <Link href="/login" className="text-amber-300 underline">
-                Accedi qui
-              </Link>
-            </p>
-          </div>
+          <Link
+            href="/register"
+            className="inline-block px-6 py-3 rounded-xl bg-amber-400 text-black font-semibold hover:bg-amber-300 transition"
+          >
+            Iscriviti per un mese
+          </Link>
         </div>
       </section>
 
-      {/* MISSION SECTION */}
-      <section id="mission" className="border-b border-slate-800 bg-slate-950/80 py-16">
+      {/* METODO */}
+      <section className="border-b border-slate-800 bg-slate-950/80 py-16">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
-          <h2 className="text-3xl font-bold text-amber-300">La mia missione</h2>
+          <h2 className="text-3xl font-bold text-amber-300">Il metodo</h2>
 
           <p className="text-sm text-slate-200 leading-relaxed">
-            La mia missione è dare dignità a un mondo bellissimo — fatto di numeri,
-            probabilità e rompicapi matematici — troppo spesso etichettato male dal
-            sentiment comune.
+            Il nostro lavoro non consiste nel prevedere ogni risultato.
+            Consiste nel costruire un insieme di regole che possiamo
+            rispettare anche quando il risultato non ci premia.
+          </p>
+
+          <p className="italic text-slate-300 border-l-2 border-amber-400 pl-4 text-sm">
+            “Se perdiamo con le nostre regole, possiamo conviverci.
+            <br />
+            Se perdiamo con quelle degli altri, no.”
           </p>
 
           <p className="text-sm text-slate-200 leading-relaxed">
-            Qui non troverai listoni “facili”, ma poche previsioni mirate, basate
-            sull’asimmetria, sul valore atteso positivo e sulla ricerca dei veri
-            cigni neri.
+            Nel nostro approccio la perdita non è un errore.
+            È una variabile prevista, accettata e integrata nel metodo.
+          </p>
+
+          <p className="text-sm text-slate-200 leading-relaxed">
+            Dove il mercato vede il “difficile”, noi cerchiamo valore.
+            Scegliamo eventi che il mercato percepisce come rari:
+            sono questi “cigni” a creare il nostro vantaggio informativo.
+          </p>
+
+          <p className="italic text-slate-400 text-sm">
+            “Il problema non è prevedere il futuro,
+            ma sopravvivere abbastanza a lungo da incontrarlo.”
           </p>
         </div>
       </section>
 
       {/* ANALISI WEEKEND */}
-      <section
-        id="analisi-weekend"
-        className="border-b border-slate-800 bg-slate-950/80 py-16"
-      >
-        <div className="max-w-4xl mx-auto px-6 space-y-8">
-
+      <section className="border-b border-slate-800 bg-slate-950/80 py-16">
+        <div className="max-w-6xl mx-auto px-6 space-y-6">
           <h2 className="text-3xl font-bold text-amber-300">
-            Analisi del weekend
+            Analisi del Weekend
           </h2>
 
-          <p className="text-sm text-slate-300 leading-relaxed">
-            Monitoriamo centinaia di partite. Ne selezioniamo pochissime.
-            Rendiamo il processo visibile.
-          </p>
+          <div className="flex gap-6 overflow-x-auto pb-4">
 
-          {/* CONTESTO */}
-          <div className="space-y-3">
-            <p className="text-sm text-slate-200 leading-relaxed">
-              Nel corso del weekend abbiamo analizzato circa{" "}
-              <strong>400 partite</strong>, distribuite su più leghe e mercati.
-              Di queste, solo <strong>4 eventi</strong> hanno superato tutti i
-              nostri filtri.
-            </p>
+            {/* SCORE CARD WEEKEND */}
+            <div className="min-w-[320px] max-w-[320px] bg-[#111936] rounded-xl p-5 space-y-4 border border-slate-800">
 
-            <p className="italic text-amber-300 text-sm">
-              Selezionare è più difficile che indovinare.
-              <br />
-              Ed è per questo che lo facciamo.
-            </p>
+              <h3 className="text-lg font-semibold text-amber-300">
+                Weekend 13–15 Dicembre 2025
+              </h3>
 
-            <p className="italic text-slate-400 text-sm">
-              Non tutto ciò che può essere giocato, va giocato.
-            </p>
+              <ul className="text-sm text-slate-300 space-y-1">
+                <li>Partite analizzate: <strong>400</strong></li>
+                <li>Eventi selezionati: <strong>4</strong></li>
+                <li>Eventi vinti: <strong>3</strong></li>
+                <li>Eventi persi: <strong>1</strong></li>
+              </ul>
+
+              <div className="border-t border-slate-700 pt-3 text-sm text-slate-300 space-y-1">
+                <p><strong>Stake fisso:</strong> 10€</p>
+                <p>Capitale investito: <strong>40€</strong></p>
+                <p>Ritorno totale: <strong>130,50€</strong></p>
+                <p className="text-green-400 font-semibold">
+                  ROI: +226%
+                </p>
+              </div>
+
+              <p className="text-amber-300 text-sm font-semibold">
+                Noi cerchiamo i cigni.
+                <br />
+                Sono difficili.
+                <br />
+                Ma pagano di più.
+              </p>
+
+              {/* SCREENSHOT GRID */}
+              <div className="grid grid-cols-2 gap-2 pt-2">
+
+                <Image
+                  src="/images/weekends/2025-12-13/bet-1-ingolstadt-1860.jpg"
+                  alt="Ingolstadt Monaco 1860"
+                  width={150}
+                  height={150}
+                  className="rounded-md cursor-pointer"
+                  onClick={() =>
+                    setSelectedImage("/images/weekends/2025-12-13/bet-1-ingolstadt-1860.jpg")
+                  }
+                />
+
+                <Image
+                  src="/images/weekends/2025-12-13/bet-2-cercle-mechelen.jpg"
+                  alt="Cercle Brugge Mechelen"
+                  width={150}
+                  height={150}
+                  className="rounded-md cursor-pointer"
+                  onClick={() =>
+                    setSelectedImage("/images/weekends/2025-12-13/bet-2-cercle-mechelen.jpg")
+                  }
+                />
+
+                {/* VANSPOR CON BADGE */}
+                <div className="relative">
+                  <span className="absolute top-1 left-1 bg-amber-400 text-black text-xs font-bold px-2 py-0.5 rounded-md z-10">
+                    Quota 5.75
+                  </span>
+
+                  <Image
+                    src="/images/weekends/2025-12-13/bet-3-vanspor-umraniye.jpg"
+                    alt="Vanspor Umraniyespor"
+                    width={150}
+                    height={150}
+                    className="rounded-md cursor-pointer"
+                    onClick={() =>
+                      setSelectedImage("/images/weekends/2025-12-13/bet-3-vanspor-umraniye.jpg")
+                    }
+                  />
+                </div>
+
+                <Image
+                  src="/images/weekends/2025-12-13/bet-multipla.jpg"
+                  alt="Multipla weekend"
+                  width={150}
+                  height={150}
+                  className="rounded-md cursor-pointer"
+                  onClick={() =>
+                    setSelectedImage("/images/weekends/2025-12-13/bet-multipla.jpg")
+                  }
+                />
+
+              </div>
+            </div>
+
+            {/* PLACEHOLDER FUTURO */}
+            <div className="min-w-[320px] max-w-[320px] flex items-center justify-center border border-dashed border-slate-700 rounded-xl text-slate-500 text-sm">
+              Prossimo weekend in arrivo
+            </div>
+
           </div>
-
-          {/* REGOLE */}
-          <div className="space-y-3">
-            <p className="text-sm text-slate-200 leading-relaxed">
-              Il nostro lavoro non consiste nel prevedere ogni risultato.
-              Consiste nel costruire un insieme di regole che possiamo rispettare
-              anche quando il risultato non ci premia.
-            </p>
-
-            <p className="italic text-slate-300 text-sm border-l-2 border-amber-400 pl-4">
-              “Se perdiamo con le nostre regole, possiamo conviverci.
-              <br />
-              Se perdiamo con quelle degli altri, no.”
-            </p>
-          </div>
-
-          {/* CIGNI */}
-          <div className="space-y-3">
-            <p className="text-sm text-slate-200 leading-relaxed">
-              Nel nostro approccio la perdita non è un errore. È una variabile
-              prevista, accettata e integrata nel metodo.
-            </p>
-
-            <p className="text-sm text-slate-200 leading-relaxed">
-              Dove il sentiment vede il “difficile”, noi cerchiamo valore.
-              Scegliamo eventi che il mercato percepisce come rari:
-              sono questi “cigni” a creare il nostro vantaggio informativo.
-            </p>
-
-            <p className="text-sm text-slate-200 leading-relaxed">
-              Quote di questo tipo non servono a inseguire il colpo,
-              ma a costruire una gestione del rischio più razionale.
-            </p>
-
-            <p className="font-semibold text-amber-300 text-sm">
-              Noi cerchiamo i cigni.
-              <br />
-              Sono difficili.
-              <br />
-              Ma pagano di più.
-            </p>
-          </div>
-
-          {/* SOSTENIBILITÀ */}
-          <div className="space-y-3">
-            <p className="italic text-slate-300 text-sm border-l-2 border-amber-400 pl-4">
-              “Il problema non è prevedere il futuro,
-              <br />
-              ma sopravvivere abbastanza a lungo da incontrarlo.”
-            </p>
-
-            <p className="italic text-slate-400 text-sm">
-              “Non è che siamo più intelligenti.
-              <br />
-              È che siamo meno stupidi più a lungo.”
-            </p>
-          </div>
-
-          {/* NUMERI PLACEHOLDER */}
-          <div className="space-y-2 pt-4">
-            <p className="text-sm text-slate-300 font-semibold">
-              Numeri del weekend (in aggiornamento)
-            </p>
-
-            <ul className="text-sm text-slate-400 space-y-1">
-              <li>• Partite monitorate: ~400</li>
-              <li>• Eventi selezionati: 4</li>
-              <li>• Quote medie: in aggiornamento</li>
-              <li>• ROI simulato a stake fisso: in aggiornamento</li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-
-      {/* LA MIA STORIA */}
-      <section id="about-me" className="border-t border-slate-800 bg-slate-950/80">
-        <div className="mx-auto max-w-4xl px-6 py-12 space-y-4">
-          <h2 className="text-xl font-semibold text-amber-300">
-            La mia storia
-          </h2>
-
-          <p className="text-sm leading-relaxed text-slate-200">
-            HeroTRiP nasce da anni di studio, test, errori e tentativi.
-            Dalla matematica alla probabilità, fino all’uso dell’intelligenza
-            artificiale per rendere verificabile ciò che prima era solo intuizione.
-          </p>
         </div>
       </section>
 
@@ -200,6 +187,25 @@ export default function HomePage() {
       <footer className="py-8 text-center text-slate-500 text-xs">
         © {new Date().getFullYear()} HeroTRiP — Tutti i diritti riservati.
       </footer>
+
+      {/* LIGHTBOX */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-[90vw] max-h-[90vh]">
+            <Image
+              src={selectedImage}
+              alt="Screenshot giocata"
+              width={900}
+              height={900}
+              className="rounded-lg object-contain"
+            />
+          </div>
+        </div>
+      )}
+
     </main>
   );
 }
