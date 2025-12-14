@@ -17,8 +17,9 @@ export default function HomePage() {
 
             <p className="text-center text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
               Il primo servizio di pronostici focalizzato sulle partite asimmetriche,
-              inattese, da quota golosa: <span className="text-amber-300 font-semibold">
-              i veri cigni neri del betting.
+              inattese, da quota golosa:{" "}
+              <span className="text-amber-300 font-semibold">
+                i veri cigni neri del betting.
               </span>
             </p>
 
@@ -54,67 +55,144 @@ export default function HomePage() {
       {/* MISSION SECTION */}
       <section id="mission" className="border-b border-slate-800 bg-slate-950/80 py-16">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
-          
           <h2 className="text-3xl font-bold text-amber-300">La mia missione</h2>
 
           <p className="text-sm text-slate-200 leading-relaxed">
-            Ciao e benvenuto nella mia pagina, sono HeroTRiP e ho lavorato negli ultimi mesi/anni
-            per realizzare qualcosa di innovativo e profittevole nel mondo del betting.
+            La mia missione è dare dignità a un mondo bellissimo — fatto di numeri,
+            probabilità e rompicapi matematici — troppo spesso etichettato male dal
+            sentiment comune.
           </p>
 
           <p className="text-sm text-slate-200 leading-relaxed">
-            La mia missione è dare dignità a un mondo bellissimo — fatto di numeri, probabilità
-            e intriganti rompicapi matematici — troppo spesso etichettato male dal sentiment comune.
-          </p>
-
-          <p className="text-sm text-slate-200 leading-relaxed">
-            Qui non troverai listoni “facili”, ma poche previsioni mirate, basate sul concetto
-            di asimmetria, valore atteso positivo e sulla ricerca di vere bombe di quota.
-          </p>
-
-          <p className="text-sm text-slate-200 leading-relaxed">
-            Se ti affidi a me, ti affidi a un approccio imprenditoriale, ragionato e basato su
-            metriche reali, risultati tracciabili e disciplina.
+            Qui non troverai listoni “facili”, ma poche previsioni mirate, basate
+            sull’asimmetria, sul valore atteso positivo e sulla ricerca dei veri
+            cigni neri.
           </p>
         </div>
       </section>
 
-      {/* LA MIA STORIA — NUOVA SEZIONE */}
+      {/* ANALISI WEEKEND */}
+      <section
+        id="analisi-weekend"
+        className="border-b border-slate-800 bg-slate-950/80 py-16"
+      >
+        <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+          <h2 className="text-3xl font-bold text-amber-300">
+            Analisi del weekend
+          </h2>
+
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Monitoriamo centinaia di partite. Ne selezioniamo pochissime.
+            Rendiamo il processo visibile.
+          </p>
+
+          {/* CONTESTO */}
+          <div className="space-y-3">
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Nel corso del weekend abbiamo analizzato circa{" "}
+              <strong>400 partite</strong>, distribuite su più leghe e mercati.
+              Di queste, solo <strong>4 eventi</strong> hanno superato tutti i
+              nostri filtri.
+            </p>
+
+            <p className="italic text-amber-300 text-sm">
+              Selezionare è più difficile che indovinare.
+              <br />
+              Ed è per questo che lo facciamo.
+            </p>
+
+            <p className="italic text-slate-400 text-sm">
+              Non tutto ciò che può essere giocato, va giocato.
+            </p>
+          </div>
+
+          {/* REGOLE */}
+          <div className="space-y-3">
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Il nostro lavoro non consiste nel prevedere ogni risultato.
+              Consiste nel costruire un insieme di regole che possiamo rispettare
+              anche quando il risultato non ci premia.
+            </p>
+
+            <p className="italic text-slate-300 text-sm border-l-2 border-amber-400 pl-4">
+              “Se perdiamo con le nostre regole, possiamo conviverci.
+              <br />
+              Se perdiamo con quelle degli altri, no.”
+            </p>
+          </div>
+
+          {/* CIGNI */}
+          <div className="space-y-3">
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Nel nostro approccio la perdita non è un errore. È una variabile
+              prevista, accettata e integrata nel metodo.
+            </p>
+
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Dove il sentiment vede il “difficile”, noi cerchiamo valore.
+              Scegliamo eventi che il mercato percepisce come rari:
+              sono questi “cigni” a creare il nostro vantaggio informativo.
+            </p>
+
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Quote di questo tipo non servono a inseguire il colpo,
+              ma a costruire una gestione del rischio più razionale.
+            </p>
+
+            <p className="font-semibold text-amber-300 text-sm">
+              Noi cerchiamo i cigni.
+              <br />
+              Sono difficili.
+              <br />
+              Ma pagano di più.
+            </p>
+          </div>
+
+          {/* SOSTENIBILITÀ */}
+          <div className="space-y-3">
+            <p className="italic text-slate-300 text-sm border-l-2 border-amber-400 pl-4">
+              “Il problema non è prevedere il futuro,
+              <br />
+              ma sopravvivere abbastanza a lungo da incontrarlo.”
+            </p>
+
+            <p className="italic text-slate-400 text-sm">
+              “Non è che siamo più intelligenti.
+              <br />
+              È che siamo meno stupidi più a lungo.”
+            </p>
+          </div>
+
+          {/* NUMERI PLACEHOLDER */}
+          <div className="space-y-2 pt-4">
+            <p className="text-sm text-slate-300 font-semibold">
+              Numeri del weekend (in aggiornamento)
+            </p>
+
+            <ul className="text-sm text-slate-400 space-y-1">
+              <li>• Partite monitorate: ~400</li>
+              <li>• Eventi selezionati: 4</li>
+              <li>• Quote medie: in aggiornamento</li>
+              <li>• ROI simulato a stake fisso: in aggiornamento</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      {/* LA MIA STORIA */}
       <section id="about-me" className="border-t border-slate-800 bg-slate-950/80">
         <div className="mx-auto max-w-4xl px-6 py-12 space-y-4">
-
-          <h2 className="text-xl font-semibold text-amber-300">La mia storia</h2>
-
-          <p className="text-sm leading-relaxed text-slate-200">
-            E ora è bene che tu sappia un po' di me: non sono un professionista ma un appassionato
-            di matematica, probabilità e “sorprese”.
-          </p>
+          <h2 className="text-xl font-semibold text-amber-300">
+            La mia storia
+          </h2>
 
           <p className="text-sm leading-relaxed text-slate-200">
-            Per anni ho provato di tutto (GoalProfit, Packball, FootyStat, formule su Excel,
-            calcoli XG ed Elo…). Ho seguito persone che nel panorama italiano ritengo competenti
-            e seri: Amato, ma soprattutto <strong>Roger Fazio</strong>, il mio vero mentore —
-            sempre contenuti di altissimo livello, idee e approcci innovativi.
+            HeroTRiP nasce da anni di studio, test, errori e tentativi.
+            Dalla matematica alla probabilità, fino all’uso dell’intelligenza
+            artificiale per rendere verificabile ciò che prima era solo intuizione.
           </p>
-
-          <p className="text-sm leading-relaxed text-slate-200">
-            Ho letto libri, sperimentato strategie e money management. Ma avevo sempre quella
-            sensazione di “manca qualcosa”, la voglia di spingermi oltre, di trovare la mia strada,
-            i miei pronostici.
-          </p>
-
-          <p className="text-sm leading-relaxed text-slate-200">
-            Così ho messo tutto me stesso in questo progetto quando ho capito che l’intelligenza
-            artificiale poteva abbattere barriere e trasformare le mille idee che avevo in qualcosa
-            di verificabile e tangibile.
-          </p>
-
-          <p className="text-sm leading-relaxed text-slate-200">
-            Da qui nasce HeroTRiP: un percorso fatto di test, machine learning, nuove metriche —
-            spesso controintuitive — ideate per esplorare il mondo delle probabilità alla ricerca
-            dei veri “cigni neri”.
-          </p>
-
         </div>
       </section>
 
@@ -122,7 +200,6 @@ export default function HomePage() {
       <footer className="py-8 text-center text-slate-500 text-xs">
         © {new Date().getFullYear()} HeroTRiP — Tutti i diritti riservati.
       </footer>
-
     </main>
   );
 }
