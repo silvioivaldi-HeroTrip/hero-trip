@@ -11,6 +11,9 @@
     "return": 130.5,
     "profit": 90.5,
     "roi": 226,
+	"netProfit": 90.5,
+    "avgOdds": 4.35,
+    "maxOdds": 5.75,
     "images": [
       {
         "file": "Vanspor_Umraniyespor.png",
