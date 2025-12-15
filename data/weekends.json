@@ -1,0 +1,35 @@
+[
+  {
+    "id": "2025-12-13",
+    "label": "Weekend 13–15 Dicembre 2025",
+    "analyzed": 400,
+    "selected": 4,
+    "wins": 3,
+    "losses": 1,
+    "stake": 10,
+    "invested": 40,
+    "return": 130.5,
+    "profit": 90.5,
+    "roi": 226,
+    "images": [
+      {
+        "file": "bet-3-vanspor-umraniye.jpg",
+        "title": "Vanspor – Umraniyespor",
+        "badge": "Quota 5.75",
+        "main": true
+      },
+      {
+        "file": "bet-1-ingolstadt-1860.jpg",
+        "title": "Ingolstadt – Monaco 1860"
+      },
+      {
+        "file": "bet-2-cercle-mechelen.jpg",
+        "title": "Cercle Brugge – Mechelen"
+      },
+      {
+        "file": "bet-multipla.jpg",
+        "title": "Multipla weekend"
+      }
+    ]
+  }
+]
