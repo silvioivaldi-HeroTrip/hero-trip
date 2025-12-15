@@ -1,6 +1,15 @@
-export default function PerformanceChart({ weekends }: any) {
+type Weekend = {
+  profit: number;
+};
+
+type Props = {
+  weekends: Weekend[];
+};
+
+export default function PerformanceChart({ weekends }: Props) {
   let bankroll = 250;
-  const points = weekends.map((w: any) => {
+
+  const points: number[] = weekends.map((w) => {
     bankroll += w.profit;
     return bankroll;
   });
@@ -12,7 +21,7 @@ export default function PerformanceChart({ weekends }: any) {
       </h3>
 
       <ul className="text-sm text-slate-300 space-y-1">
-        {points.map((p, i) => (
+        {points.map((p: number, i: number) => (
           <li key={i}>
             Weekend {i + 1}: <strong>{p.toFixed(2)}€</strong>
           </li>
