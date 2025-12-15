@@ -7,19 +7,20 @@ type Props = {
 };
 
 export default function PerformanceChart({ weekends }: Props) {
-  let bankroll = 250;
+  const initialBankroll = 250;
+  let bankroll = initialBankroll;
 
   const points: number[] = weekends.map((w) => {
     bankroll += w.profit;
     return bankroll;
   });
 
-  const width = 500;
-  const height = 220;
-  const padding = 30;
+  const width = 520;
+  const height = 240;
+  const padding = 40;
 
-  const max = Math.max(...points);
-  const min = Math.min(...points);
+  const max = Math.max(initialBankroll, ...points);
+  const min = Math.min(initialBankroll, ...points);
 
   const scaleX = (i: number) =>
     points.length === 1
@@ -27,7 +28,9 @@ export default function PerformanceChart({ weekends }: Props) {
       : padding + (i / (points.length - 1)) * (width - padding * 2);
 
   const scaleY = (v: number) =>
-    height - padding - ((v - min) / (max - min || 1)) * (height - padding * 2);
+    height -
+    padding -
+    ((v - min) / (max - min || 1)) * (height - padding * 2);
 
   const path =
     points.length > 1
@@ -51,7 +54,17 @@ export default function PerformanceChart({ weekends }: Props) {
         height={height}
         className="bg-[#0b1020] rounded-md border border-slate-700"
       >
-        {/* Linea */}
+        {/* Baseline iniziale */}
+        <line
+          x1={padding}
+          x2={width - padding}
+          y1={scaleY(initialBankroll)}
+          y2={scaleY(initialBankroll)}
+          stroke="#334155"
+          strokeDasharray="4 4"
+        />
+
+        {/* Linea equity */}
         {points.length > 1 && (
           <path
             d={path}
@@ -61,15 +74,25 @@ export default function PerformanceChart({ weekends }: Props) {
           />
         )}
 
-        {/* Punti */}
+        {/* Punto/i */}
         {points.map((p, i) => (
-          <circle
-            key={i}
-            cx={scaleX(i)}
-            cy={scaleY(p)}
-            r={5}
-            fill="#fbbf24"
-          />
+          <g key={i}>
+            <circle
+              cx={scaleX(i)}
+              cy={scaleY(p)}
+              r={6}
+              fill="#fbbf24"
+            />
+            <text
+              x={scaleX(i)}
+              y={scaleY(p) - 10}
+              textAnchor="middle"
+              fontSize="10"
+              fill="#fbbf24"
+            >
+              {p.toFixed(0)}€
+            </text>
+          </g>
         ))}
       </svg>
 
