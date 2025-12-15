@@ -13,22 +13,28 @@
     "roi": 226,
     "images": [
       {
-        "file": "bet-3-vanspor-umraniye.jpg",
+        "file": "Vanspor_Umraniyespor.png",
         "title": "Vanspor – Umraniyespor",
-        "badge": "Quota 5.75",
-        "main": true
       },
       {
-        "file": "bet-1-ingolstadt-1860.jpg",
+        "file": "Ingolstad_Monaco1860.png",
         "title": "Ingolstadt – Monaco 1860"
       },
       {
-        "file": "bet-2-cercle-mechelen.jpg",
+        "file": "Cercle_Brugge_Mechelen.png",
         "title": "Cercle Brugge – Mechelen"
       },
+	  {
+        "file": "Celta_AtleticoBilbao.png",
+        "title": "Celta Vigo - Ath Bilbao"
+      },
       {
-        "file": "bet-multipla.jpg",
-        "title": "Multipla weekend"
+        "file": "cashout.jpg",
+        "title": "CashOut"
+      },
+	  {
+        "file": "win.jpg",
+        "title": "Vincita"
       }
     ]
   }
