@@ -8,36 +8,32 @@ type Props = {
 
 export default function PerformanceChart({ weekends }: Props) {
   const initialBankroll = 250;
-  let bankroll = initialBankroll;
 
-  const points: number[] = weekends.map((w) => {
-    bankroll += w.profit;
-    return bankroll;
+  // Serie completa: punto iniziale + weekend
+  const values: number[] = [initialBankroll];
+  weekends.forEach((w) => {
+    values.push(values[values.length - 1] + w.profit);
   });
 
-  const width = 520;
-  const height = 240;
+  const width = 560;
+  const height = 260;
   const padding = 40;
 
-  const max = Math.max(initialBankroll, ...points);
-  const min = Math.min(initialBankroll, ...points);
+  const max = Math.max(...values);
+  const min = Math.min(...values);
 
   const scaleX = (i: number) =>
-    points.length === 1
-      ? width / 2
-      : padding + (i / (points.length - 1)) * (width - padding * 2);
+    padding +
+    (i / (values.length - 1 || 1)) * (width - padding * 2);
 
   const scaleY = (v: number) =>
     height -
     padding -
     ((v - min) / (max - min || 1)) * (height - padding * 2);
 
-  const path =
-    points.length > 1
-      ? points
-          .map((p, i) => `${i === 0 ? "M" : "L"} ${scaleX(i)} ${scaleY(p)}`)
-          .join(" ")
-      : "";
+  const path = values
+    .map((v, i) => `${i === 0 ? "M" : "L"} ${scaleX(i)} ${scaleY(v)}`)
+    .join(" ");
 
   return (
     <div className="bg-[#111936] p-6 rounded-xl border border-slate-800 space-y-4">
@@ -54,51 +50,53 @@ export default function PerformanceChart({ weekends }: Props) {
         height={height}
         className="bg-[#0b1020] rounded-md border border-slate-700"
       >
-        {/* Baseline iniziale */}
-        <line
-          x1={padding}
-          x2={width - padding}
-          y1={scaleY(initialBankroll)}
-          y2={scaleY(initialBankroll)}
-          stroke="#334155"
-          strokeDasharray="4 4"
+        {/* Linea equity */}
+        <path
+          d={path}
+          fill="none"
+          stroke="#fbbf24"
+          strokeWidth="3"
         />
 
-        {/* Linea equity */}
-        {points.length > 1 && (
-          <path
-            d={path}
-            fill="none"
-            stroke="#fbbf24"
-            strokeWidth="3"
-          />
-        )}
-
-        {/* Punto/i */}
-        {points.map((p, i) => (
+        {/* Punti */}
+        {values.map((v, i) => (
           <g key={i}>
             <circle
               cx={scaleX(i)}
-              cy={scaleY(p)}
+              cy={scaleY(v)}
               r={6}
-              fill="#fbbf24"
+              fill={i === 0 ? "#38bdf8" : "#fbbf24"}
             />
             <text
               x={scaleX(i)}
-              y={scaleY(p) - 10}
+              y={scaleY(v) - 12}
               textAnchor="middle"
               fontSize="10"
-              fill="#fbbf24"
+              fill={i === 0 ? "#38bdf8" : "#fbbf24"}
             >
-              {p.toFixed(0)}€
+              {v.toFixed(0)}€
             </text>
           </g>
+        ))}
+
+        {/* Asse X (etichette weekend) */}
+        {values.map((_, i) => (
+          <text
+            key={`x-${i}`}
+            x={scaleX(i)}
+            y={height - 10}
+            textAnchor="middle"
+            fontSize="10"
+            fill="#94a3b8"
+          >
+            {i === 0 ? "Start" : `W${i}`}
+          </text>
         ))}
       </svg>
 
       <p className="text-sm text-slate-300">
         Bankroll attuale:{" "}
-        <strong>{points[points.length - 1].toFixed(2)}€</strong>
+        <strong>{values[values.length - 1].toFixed(2)}€</strong>
       </p>
     </div>
   );
