@@ -14,7 +14,8 @@
     "images": [
       {
         "file": "Vanspor_Umraniyespor.png",
-        "title": "Vanspor – Umraniyespor"
+        "title": "Vanspor – Umraniyespor",
+		"main": true
       },
       {
         "file": "Ingolstad_Monaco1860.png",
