@@ -16,9 +16,13 @@
     "maxOdds": 5.75,
     "images": [
       {
-        "file": "Vanspor_Umraniyespor.png",
-        "title": "Vanspor – Umraniyespor",
+        "file": "Tips.png",
+        "title": "TIPS",
 		"main": true
+      },
+	  {
+        "file": "Vanspor_Umraniyespor.png",
+        "title": "Vanspor – Umraniyespor"
       },
       {
         "file": "Ingolstad_Monaco1860.png",

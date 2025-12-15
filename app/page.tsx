@@ -71,20 +71,17 @@ export default function HomePage() {
                       fatto di numeri, probabilità e decisioni imperfette, troppo spesso
                       ridotto a semplice intrattenimento.
                     </p>
-
                     <p>
                       Qui non troverai promesse di vincite facili né giocate quotidiane.
                       Troverai un processo: osservazione, analisi, selezione estrema
                       e disciplina.
                     </p>
-
                     <p>
                       Monitoriamo centinaia di partite ogni settimana,
                       ma ne scegliamo pochissime.
                       Selezionare è più difficile che indovinare,
                       ed è per questo che lo facciamo.
                     </p>
-
                     <p>
                       Nel nostro approccio la perdita non è un errore.
                       È una variabile prevista, accettata e integrata nel metodo.
@@ -100,13 +97,11 @@ export default function HomePage() {
                       per i social. Sono una persona che da anni studia probabilità,
                       modelli decisionali e mercati imperfetti.
                     </p>
-
                     <p>
                       Questo progetto nasce da tentativi, errori, studio e test continui.
                       Ho perso, ho sbagliato, ho cambiato approccio più volte.
                       Ed è proprio questo percorso che ha dato forma al metodo attuale.
                     </p>
-
                     <p>
                       HeroTRiP non nasce per impressionare,
                       ma per essere sostenibile nel tempo.
@@ -123,14 +118,12 @@ export default function HomePage() {
                       Il progetto si basa su selezione estrema,
                       ricerca di asimmetrie e gestione razionale del rischio.
                     </p>
-
                     <p>
                       Lavoriamo spesso con quote medio-alte.
                       Non perché cerchiamo il “difficile”,
                       ma perché dove il mercato percepisce difficoltà
                       spesso si nasconde valore.
                     </p>
-
                     <p>
                       Cerchiamo i cigni.
                       Sono rari, sono difficili,
@@ -157,14 +150,72 @@ export default function HomePage() {
                   <PerformanceChart weekends={weekends} />
                 )}
 
-                {/* ===== FEEDBACK ===== */}
+                {/* ===== COSA DICONO DI ME ===== */}
                 {active === "Cosa dicono di me" && (
-                  <div className="max-w-3xl text-sm text-slate-400 leading-relaxed">
-                    <p>
-                      Questa sezione raccoglierà feedback reali,
-                      verificabili e contestualizzati.
-                    </p>
-                  </div>
+                  <section className="space-y-6">
+                    <div className="space-y-2">
+                      <h2 className="text-xl font-semibold text-amber-300">
+                        Cosa dicono di me
+                      </h2>
+                      <p className="text-sm text-slate-400 max-w-xl">
+                        Non sono recensioni.
+                        Sono punti di vista di chi mi conosce,
+                        mi segue o ha scelto di condividere questo percorso.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {[
+                        {
+                          text: "Conosco Silvio da anni e l’ho sempre visto rifiutare le scorciatoie. Mentre molti cercavano il colpo, lui cercava un metodo. Non parla di certezze, parla di regole. Ed è per questo che mi fido.",
+                          who: "Amico di lunga data",
+                        },
+                        {
+                          text: "Ho seguito tanti tipster. Tutti parlavano di risultati, pochi di processo. Qui ho trovato qualcosa di diverso: selezione, pazienza e numeri messi sul tavolo. Anche quando una giocata va male, capisci perché l’hai fatta.",
+                          who: "Ex follower di tipster",
+                        },
+                        {
+                          text: "Quello che mi ha convinto non è stata una quota alta. È stato il fatto che la perdita sia considerata parte del metodo. Non viene nascosta. Viene accettata.",
+                          who: "Chi sposa la filosofia",
+                        },
+                        {
+                          text: "Silvio ha sempre avuto idee fuori dal coro, ma mai campate in aria. Qui non ti dice cosa giocare, ti mostra come ragiona. E se impari a ragionare così, il risultato è una conseguenza.",
+                          who: "Collaboratore",
+                        },
+                        {
+                          text: "Niente promesse, niente slogan. Solo numeri, scelte spiegate e pochissime giocate. Finalmente qualcuno che tratta le scommesse come un investimento.",
+                          who: "Utente del progetto",
+                        },
+                        {
+                          text: "Poche giocate, tutte motivate. Anche quando si perde, il metodo resta. Ed è questo che fa la differenza.",
+                          who: "Sintesi",
+                          highlight: true,
+                        },
+                      ].map((t, i) => (
+                        <div
+                          key={i}
+                          className={`rounded-xl p-5 border ${
+                            t.highlight
+                              ? "bg-[#0f172a] border-slate-700"
+                              : "bg-[#111936] border-slate-800"
+                          }`}
+                        >
+                          <p
+                            className={`text-sm leading-relaxed ${
+                              t.highlight
+                                ? "text-slate-200 font-medium"
+                                : "text-slate-300"
+                            }`}
+                          >
+                            “{t.text}”
+                          </p>
+                          <span className="block mt-3 text-xs text-slate-500">
+                            — {t.who}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
                 )}
               </>
             )}
