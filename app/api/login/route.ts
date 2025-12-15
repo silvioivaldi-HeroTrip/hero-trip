@@ -1,52 +1,35 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    if (!email || !password) {
+    // 👉 QUI METTI LA TUA LOGICA REALE
+    // per ora esempio semplice
+    const VALID_EMAIL = "admin@herotrip.com";
+    const VALID_PASSWORD = "password123";
+
+    if (email !== VALID_EMAIL || password !== VALID_PASSWORD) {
       return NextResponse.json(
-        { ok: false, message: "Email e password obbligatorie." },
-        { status: 400 }
-      );
-    }
-
-    // Percorso del file users.json nella root del progetto
-    const filePath = path.join(process.cwd(), "users.json");
-
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { ok: false, message: "Users.json non trovato." },
-        { status: 500 }
-      );
-    }
-
-    const fileData = fs.readFileSync(filePath, "utf-8");
-    const users = JSON.parse(fileData);
-
-    const found = users.find(
-      (u: any) => u.email === email && u.password === password
-    );
-
-    if (!found) {
-      return NextResponse.json(
-        { ok: false, message: "Credenziali non valide." },
+        { error: "Credenziali non valide" },
         { status: 401 }
       );
     }
 
-    return NextResponse.json({
-      ok: true,
-      message: "Login effettuato.",
-      user: { email: found.email }
+    // ✅ Login OK → settiamo cookie di sessione
+    const response = NextResponse.json({ ok: true });
+
+    response.cookies.set("hero-auth", "true", {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      // secure: true, // puoi attivarlo quando sei solo in HTTPS
     });
 
-  } catch (error) {
-    console.error("Errore login:", error);
+    return response;
+  } catch (err) {
     return NextResponse.json(
-      { ok: false, message: "Errore interno login." },
+      { error: "Errore server" },
       { status: 500 }
     );
   }
