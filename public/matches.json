@@ -5,6 +5,7 @@
 	  "home": "Ingolstadt",
       "away": "Monaco 1860",
       "Prediction": "2",
+	  "highlight": false,
       "Tip": "ottima quota"
     },
 	{
@@ -12,6 +13,7 @@
 	  "home": "cercle brugge",
       "away": "kv mechelen",
       "Prediction": "2",
+	  "highlight": false,
       "Tip": "ottima quota, warning su Asian poco allineate"
     },
 	{
@@ -19,6 +21,7 @@
 	  "home": "Vanspor FK",
       "away": "Umraniyespor",
       "Prediction": "2",
+	  "highlight": true,
       "Tip": "ottima quota"
     },
 	{
@@ -26,6 +29,7 @@
 	  "home": "celta vigo",
       "away": "athletic club",
       "Prediction": "2",
+	  "highlight": false,
       "Tip": "ottima quota"
     }
   ]

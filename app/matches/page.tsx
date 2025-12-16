@@ -9,6 +9,7 @@ type Match = {
   away: string;
   Prediction: string;
   Tip: string;
+  highlight?: boolean; // 🔥 SOLO SE PRESENTE
 };
 
 type MatchesResponse = {
@@ -64,7 +65,7 @@ export default function MatchesPage() {
   return (
     <main className="min-h-screen bg-[#0e1428] text-white px-6 py-10">
       <div className="max-w-3xl mx-auto text-center">
-        {/* LOGO GENIUSTIP */}
+        {/* LOGO */}
         <Image
           src="/images/GeniusTip.png"
           alt="GeniusTip logo"
@@ -87,10 +88,24 @@ export default function MatchesPage() {
                   key={idx}
                   className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 shadow-lg"
                 >
+                  {/* HEADER */}
                   <div className="flex justify-between items-center mb-3">
-                    <h3 className="text-xl font-semibold">
-                      {m.home} <span className="text-gray-300">vs</span> {m.away}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-xl font-semibold">
+                        {m.home} <span className="text-gray-300">vs</span>{" "}
+                        {m.away}
+                      </h3>
+
+                      {/* 🔥 FIAMMA — SOLO SE highlight === true */}
+                      {m.highlight && (
+                        <span
+                          className="text-amber-400 text-lg"
+                          title="Struttura forte"
+                        >
+                          🔥
+                        </span>
+                      )}
+                    </div>
 
                     {/* BADGE PRONOSTICO */}
                     <span className="px-3 py-1 text-sm font-semibold rounded-full bg-amber-400 text-black">
@@ -98,6 +113,7 @@ export default function MatchesPage() {
                     </span>
                   </div>
 
+                  {/* DESCRIZIONE */}
                   <p className="text-gray-300 text-sm leading-relaxed">
                     {m.Tip}
                   </p>
