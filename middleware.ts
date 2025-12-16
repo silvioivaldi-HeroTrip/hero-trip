@@ -1,14 +1,27 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const isLogged = request.cookies.get("hero-auth");
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
 
-  if (request.nextUrl.pathname.startsWith("/matches")) {
-    if (!isLogged) {
-      return NextResponse.redirect(
-        new URL("/login", request.url)
-      );
+  // 🔓 ROTTE SEMPRE ACCESSIBILI
+  if (
+    pathname === "/" ||
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/images") ||
+    pathname.startsWith("/favicon")
+  ) {
+    return NextResponse.next();
+  }
+
+  // 🔒 PROTEGGIAMO SOLO /matches
+  if (pathname.startsWith("/matches")) {
+    const isLoggedIn = req.cookies.get("auth")?.value === "true";
+
+    if (!isLoggedIn) {
+      return NextResponse.redirect(new URL("/login", req.url));
     }
   }
 
