@@ -12,15 +12,19 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
-    // autenticazione super semplice (come nelle tue pagine attuali)
     const res = await fetch("/api/login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email, password }),
+      credentials: "include", // 🔑 FONDAMENTALE
     });
 
     if (res.ok) {
-      router.push("/matches"); // 👈 REDIRECT DOPO LOGIN
+      router.push("/matches");
     } else {
       setError("Credenziali non valide");
     }
@@ -36,6 +40,7 @@ export default function LoginPage() {
           width={300}
           height={200}
           className="mx-auto mb-8"
+          priority
         />
 
         <h2 className="text-3xl font-bold text-center mb-6 text-amber-400">
@@ -46,7 +51,8 @@ export default function LoginPage() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full p-3 rounded-lg bg-[#0d1220]"
+            required
+            className="w-full p-3 rounded-lg bg-[#0d1220] focus:outline-none focus:ring-2 focus:ring-amber-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -54,12 +60,17 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-3 rounded-lg bg-[#0d1220]"
+            required
+            className="w-full p-3 rounded-lg bg-[#0d1220] focus:outline-none focus:ring-2 focus:ring-amber-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <p className="text-red-400 text-sm">{error}</p>}
+          {error && (
+            <p className="text-red-400 text-sm text-center">
+              {error}
+            </p>
+          )}
 
           <button
             type="submit"

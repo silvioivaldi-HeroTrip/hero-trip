@@ -1,35 +1,24 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl
 
-  // 1️⃣ Rotte PUBBLICHE → sempre consentite
-  if (
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/api/login") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/favicon")
-  ) {
-    return NextResponse.next();
+  // 🔓 Lasciamo passare tutto tranne /matches
+  if (!pathname.startsWith('/matches')) {
+    return NextResponse.next()
   }
 
-  // 2️⃣ Controllo autenticazione SOLO per rotte protette
-  if (pathname.startsWith("/matches")) {
-    const isLoggedIn = request.cookies.get("auth")?.value === "true";
+  // 🔐 Protezione SOLO /matches
+  const isLogged = req.cookies.get('auth')?.value === 'true'
 
-    if (!isLoggedIn) {
-      const loginUrl = request.nextUrl.clone();
-      loginUrl.pathname = "/login";
-      return NextResponse.redirect(loginUrl);
-    }
+  if (!isLogged) {
+    return NextResponse.redirect(new URL('/login', req.url))
   }
 
-  // 3️⃣ Default
-  return NextResponse.next();
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ["/:path*"],
-};
+  matcher: ['/matches']
+}

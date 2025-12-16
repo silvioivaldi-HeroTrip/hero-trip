@@ -1,25 +1,27 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+import users from '@/data/users.json'
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  const { email, password } = await req.json()
 
-  if (
-    email === process.env.EMAIL_USER &&
-    password === process.env.EMAIL_PASS
-  ) {
-    const res = NextResponse.json({ success: true });
+  const user = users.find(
+    (u: any) => u.email === email && u.password === password
+  )
 
-    res.cookies.set("auth", "true", {
-      httpOnly: true,
-      path: "/",
-      sameSite: "lax",
-    });
-
-    return res;
+  if (!user) {
+    return NextResponse.json(
+      { error: 'Credenziali non valide' },
+      { status: 401 }
+    )
   }
 
-  return NextResponse.json(
-    { success: false, message: "Credenziali non valide" },
-    { status: 401 }
-  );
+  const response = NextResponse.json({ ok: true })
+
+  response.cookies.set('auth', 'true', {
+    httpOnly: true,
+    path: '/',
+    sameSite: 'lax'
+  })
+
+  return response
 }
