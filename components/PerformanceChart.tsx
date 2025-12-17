@@ -15,9 +15,10 @@ export default function PerformanceChart({ weekends }: Props) {
     values.push(values[values.length - 1] + w.profit);
   });
 
-  const width = 560;
-  const height = 260;
-  const padding = 40;
+  // Coordinate logiche (viewBox)
+  const width = 100;
+  const height = 50;
+  const padding = 8;
 
   const max = Math.max(...values);
   const min = Math.min(...values);
@@ -36,7 +37,7 @@ export default function PerformanceChart({ weekends }: Props) {
     .join(" ");
 
   return (
-    <div className="bg-[#111936] p-6 rounded-xl border border-slate-800 space-y-4">
+    <div className="bg-[#111936] p-5 rounded-xl border border-slate-800 space-y-4">
       <h3 className="text-amber-300 font-semibold">
         Performance complessiva
       </h3>
@@ -45,54 +46,57 @@ export default function PerformanceChart({ weekends }: Props) {
         Equity line con bankroll iniziale di 250€, aggiornata weekend dopo weekend.
       </p>
 
-      <svg
-        width={width}
-        height={height}
-        className="bg-[#0b1020] rounded-md border border-slate-700"
-      >
-        {/* Linea equity */}
-        <path
-          d={path}
-          fill="none"
-          stroke="#fbbf24"
-          strokeWidth="3"
-        />
+      {/* CONTENITORE RESPONSIVE */}
+      <div className="w-full overflow-hidden">
+        <svg
+          viewBox={`0 0 ${width} ${height}`}
+          preserveAspectRatio="xMidYMid meet"
+          className="w-full h-auto bg-[#0b1020] rounded-md border border-slate-700"
+        >
+          {/* Linea */}
+          <path
+            d={path}
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="0.8"
+          />
 
-        {/* Punti */}
-        {values.map((v, i) => (
-          <g key={i}>
-            <circle
-              cx={scaleX(i)}
-              cy={scaleY(v)}
-              r={6}
-              fill={i === 0 ? "#38bdf8" : "#fbbf24"}
-            />
+          {/* Punti + valori */}
+          {values.map((v, i) => (
+            <g key={i}>
+              <circle
+                cx={scaleX(i)}
+                cy={scaleY(v)}
+                r="1.2"
+                fill={i === 0 ? "#38bdf8" : "#fbbf24"}
+              />
+              <text
+                x={scaleX(i)}
+                y={scaleY(v) - 2}
+                textAnchor="middle"
+                fontSize="2.2"
+                fill={i === 0 ? "#38bdf8" : "#fbbf24"}
+              >
+                {v.toFixed(0)}€
+              </text>
+            </g>
+          ))}
+
+          {/* Etichette X */}
+          {values.map((_, i) => (
             <text
+              key={`x-${i}`}
               x={scaleX(i)}
-              y={scaleY(v) - 12}
+              y={height - 2}
               textAnchor="middle"
-              fontSize="10"
-              fill={i === 0 ? "#38bdf8" : "#fbbf24"}
+              fontSize="2.2"
+              fill="#94a3b8"
             >
-              {v.toFixed(0)}€
+              {i === 0 ? "Start" : `W${i}`}
             </text>
-          </g>
-        ))}
-
-        {/* Asse X (etichette weekend) */}
-        {values.map((_, i) => (
-          <text
-            key={`x-${i}`}
-            x={scaleX(i)}
-            y={height - 10}
-            textAnchor="middle"
-            fontSize="10"
-            fill="#94a3b8"
-          >
-            {i === 0 ? "Start" : `W${i}`}
-          </text>
-        ))}
-      </svg>
+          ))}
+        </svg>
+      </div>
 
       <p className="text-sm text-slate-300">
         Bankroll attuale:{" "}
