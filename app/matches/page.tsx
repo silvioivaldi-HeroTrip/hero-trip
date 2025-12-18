@@ -9,12 +9,131 @@ type Match = {
   away: string;
   Prediction: string;
   Tip: string;
-  highlight?: boolean; // 🔥 SOLO SE PRESENTE
+  zone: "calda" | "buona" | "warning" | "no bet" | string;
 };
 
 type MatchesResponse = {
   matches: Match[];
 };
+
+function normalizeZone(z: string | undefined): "buona" | "calda" | "warning" | "no bet" {
+  const s = (z ?? "").toString().trim().toLowerCase();
+  if (s === "buona") return "buona";
+  if (s === "calda") return "calda";
+  if (s === "warning") return "warning";
+  if (s === "no bet" || s === "nobet" || s === "no_bet") return "no bet";
+  // default (se ti dimentichi di compilarlo)
+  return "calda";
+}
+
+function ZoneBadge({ zone }: { zone: "buona" | "calda" | "warning" | "no bet" }) {
+  const map: Record<typeof zone, string> = {
+    buona: "🔥 BUONA",
+    calda: "🟡 CALDA",
+    warning: "⚠️ WARNING",
+    "no bet": "⛔ NO BET",
+  };
+
+  const cls: Record<typeof zone, string> = {
+    buona: "bg-emerald-500/20 border-emerald-400/30 text-emerald-200",
+    calda: "bg-amber-500/20 border-amber-400/30 text-amber-200",
+    warning: "bg-orange-500/20 border-orange-400/30 text-orange-200",
+    "no bet": "bg-gray-500/15 border-white/10 text-gray-200",
+  };
+
+  return (
+    <span className={`inline-flex items-center px-2 py-1 text-xs rounded-full border ${cls[zone]}`}>
+      {map[zone]}
+    </span>
+  );
+}
+
+function MatchCard({ m }: { m: Match }) {
+  const z = normalizeZone(m.zone);
+
+  const cardTone =
+    z === "no bet"
+      ? "opacity-60"
+      : z === "warning"
+      ? "opacity-85"
+      : "opacity-100";
+
+  return (
+    <div className={`bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4 shadow ${cardTone}`}>
+      <div className="flex justify-between items-start gap-3">
+        <div>
+          <h3 className="text-base font-semibold">
+            {m.home} <span className="text-gray-300">vs</span> {m.away}
+          </h3>
+          <p className="text-sm text-gray-300 mt-1">🎯 Pronostico: <span className="text-white font-semibold">{m.Prediction}</span></p>
+        </div>
+        <ZoneBadge zone={z} />
+      </div>
+
+      {m.Tip?.trim() ? (
+        <p className="text-gray-300 text-sm leading-relaxed mt-3">
+          {m.Tip}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function MatrixQuadrant({
+  title,
+  subtitle,
+  zoneKey,
+  matches,
+  showGenius,
+}: {
+  title: string;
+  subtitle: string;
+  zoneKey: "buona" | "calda" | "warning" | "no bet";
+  matches: Match[];
+  showGenius?: boolean;
+}) {
+  const headerCls: Record<typeof zoneKey, string> = {
+    buona: "text-emerald-200",
+    calda: "text-amber-200",
+    warning: "text-orange-200",
+    "no bet": "text-gray-200",
+  };
+
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div>
+          <h3 className={`text-lg font-bold ${headerCls[zoneKey]}`}>
+            {title}
+          </h3>
+          <p className="text-xs text-gray-300">{subtitle}</p>
+        </div>
+
+        {showGenius ? (
+          <div className="flex items-center gap-2">
+            <Image
+              src="/images/GeniusTip.png"
+              alt="Genius"
+              width={48}
+              height={48}
+              className="rounded-xl opacity-95"
+            />
+          </div>
+        ) : null}
+      </div>
+
+      {matches.length === 0 ? (
+        <p className="text-sm text-gray-400 italic">Nessuna partita in questa zona.</p>
+      ) : (
+        <div className="space-y-3">
+          {matches.map((m, idx) => (
+            <MatchCard key={idx} m={m} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function MatchesPage() {
   const [data, setData] = useState<MatchesResponse | null>(null);
@@ -40,7 +159,7 @@ export default function MatchesPage() {
   if (loading) {
     return (
       <main className="min-h-screen bg-[#0e1428] text-white flex items-center justify-center">
-        Caricamento partite...
+        Caricamento...
       </main>
     );
   }
@@ -53,7 +172,6 @@ export default function MatchesPage() {
     );
   }
 
-  // --- Raggruppa partite per data ---
   const matchesByDate = data!.matches.reduce((acc: any, match: Match) => {
     if (!acc[match.Data]) acc[match.Data] = [];
     acc[match.Data].push(match);
@@ -64,64 +182,82 @@ export default function MatchesPage() {
 
   return (
     <main className="min-h-screen bg-[#0e1428] text-white px-6 py-10">
+      {/* LOGO IN ALTO */}
       <div className="max-w-3xl mx-auto text-center">
-        {/* LOGO */}
         <Image
           src="/images/GeniusTip.png"
           alt="GeniusTip logo"
           width={450}
           height={300}
-          className="mx-auto mb-10"
+          className="mx-auto mb-6"
         />
+
+        <p className="text-gray-300 text-sm max-w-xl mx-auto">
+          Matrice dei Cigni: organizziamo le partite per zone (buona, calda, warning, no bet).
+        </p>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-10">
-        {sortedDates.map((date) => (
-          <section key={date} className="mt-6">
-            <h2 className="text-2xl font-bold text-amber-300 mb-4 text-center">
-              📅 {date}
-            </h2>
+      <div className="max-w-6xl mx-auto space-y-12 mt-10">
+        {sortedDates.map((date) => {
+          const dayMatches: Match[] = matchesByDate[date];
 
-            <div className="grid md:grid-cols-1 gap-6">
-              {matchesByDate[date].map((m: Match, idx: number) => (
-                <div
-                  key={idx}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 shadow-lg"
-                >
-                  {/* HEADER */}
-                  <div className="flex justify-between items-center mb-3">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-xl font-semibold">
-                        {m.home} <span className="text-gray-300">vs</span>{" "}
-                        {m.away}
-                      </h3>
+          const buckets: Record<"buona" | "calda" | "warning" | "no bet", Match[]> = {
+            buona: [],
+            calda: [],
+            warning: [],
+            "no bet": [],
+          };
 
-                      {/* 🔥 FIAMMA — SOLO SE highlight === true */}
-                      {m.highlight && (
-                        <span
-                          className="text-amber-400 text-lg"
-                          title="Struttura forte"
-                        >
-                          🔥
-                        </span>
-                      )}
-                    </div>
+          dayMatches.forEach((m) => {
+            const z = normalizeZone(m.zone);
+            buckets[z].push(m);
+          });
 
-                    {/* BADGE PRONOSTICO */}
-                    <span className="px-3 py-1 text-sm font-semibold rounded-full bg-amber-400 text-black">
-                      Pronostico: {m.Prediction}
-                    </span>
-                  </div>
+          return (
+            <section key={date} className="mt-6">
+              <h2 className="text-2xl font-bold text-amber-300 mb-5 text-center">
+                📅 {date}
+              </h2>
 
-                  {/* DESCRIZIONE */}
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {m.Tip}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+              {/* MATRICE 2×2 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* alto-sinistra */}
+                <MatrixQuadrant
+                  title="OTTIMA"
+                  subtitle="Zona migliore (da giocare)"
+                  zoneKey="buona"
+                  matches={buckets["buona"]}
+                  showGenius
+                />
+
+                {/* alto-destra */}
+                <MatrixQuadrant
+                  title="CALDA"
+                  subtitle="Interessante (da valutare)"
+                  zoneKey="calda"
+                  matches={buckets["calda"]}
+                  showGenius
+                />
+
+                {/* basso-sinistra */}
+                <MatrixQuadrant
+                  title="NO BET"
+                  subtitle="Da evitare"
+                  zoneKey="no bet"
+                  matches={buckets["no bet"]}
+                />
+
+                {/* basso-destra */}
+                <MatrixQuadrant
+                  title="WARNING"
+                  subtitle="Favorita solida / rischio alto"
+                  zoneKey="warning"
+                  matches={buckets["warning"]}
+                />
+              </div>
+            </section>
+          );
+        })}
       </div>
     </main>
   );
