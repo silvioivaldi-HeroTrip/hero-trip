@@ -1,36 +1,84 @@
 {
   "matches": [
     {
-      "Data": "2025-12-13",
-	  "home": "Ingolstadt",
-      "away": "Monaco 1860",
-      "Prediction": "2",
+      "Data": "2025-12-19",
+	  "home": "FC Eindhoven",
+      "away": "Jong AZ",
+      "Prediction": "1",
 	  "zone": "calda",
+      "Tip": "Jong AZ, difesa e portiere debole"
+    },
+	{
+      "Data": "2025-12-20",
+	  "home": "VfL Wolfsburg",
+      "away": "SC Freiburg",
+      "Prediction": "1",
+	  "zone": "calda",
+      "Tip": "ottima quota, buon attacco underdog e buon portiere"
+    },
+	{
+      "Data": "2025-12-20",
+	  "home": "Harrogate Town",
+      "away": "Milton Keynes Dons",
+      "Prediction": "1",
+	  "zone": "calda",
+      "Tip": "ottima quota, buon attacco underdog"
+    },
+	{
+      "Data": "2025-12-20",
+	  "home": "Padova",
+      "away": "Sampdoria",
+      "Prediction": "1",
+	  "zone": "buona",
       "Tip": "ottima quota"
     },
 	{
-      "Data": "2025-12-13",
-	  "home": "cercle brugge",
-      "away": "kv mechelen",
+      "Data": "2025-12-20",
+	  "home": "FC Thun",
+      "away": "FC Zurich",
       "Prediction": "2",
 	  "zone": "buona",
-      "Tip": "ottima quota, warning su Asian poco allineate"
+      "Tip": "attacco casa sterile"
     },
 	{
-      "Data": "2025-12-14",
-	  "home": "Vanspor FK",
-      "away": "Umraniyespor",
+      "Data": "2025-12-20",
+	  "home": "GIL Vicente",
+      "away": "Rio Ave",
       "Prediction": "2",
 	  "zone": "warning",
-      "Tip": "ottima quota"
+      "Tip": "attacco casa sterile"
     },
 	{
-      "Data": "2025-12-14",
-	  "home": "celta vigo",
-      "away": "athletic club",
+      "Data": "2025-12-20",
+	  "home": "Las Palmas",
+      "away": "Cultural Leonesa",
+      "Prediction": "2",
+	  "zone": "warning",
+      "Tip": "attacco casa sterile ma difesa solida"
+    },
+	{
+      "Data": "2025-12-20",
+	  "home": "Bandirmaspor",
+      "away": "Erzurum BB",
+      "Prediction": "1",
+	  "zone": "buona",
+      "Tip": "attacco Erzurum sterile"
+    },
+	{
+      "Data": "2025-12-21",
+	  "home": "Club Brugge KV",
+      "away": "Gent",
       "Prediction": "2",
 	  "zone": "no bet",
-      "Tip": "ottima quota"
+      "Tip": "favorita solida"
+    },
+	{
+      "Data": "2025-12-21",
+	  "home": "OH Leuven",
+      "away": "Cercle Brugge",
+      "Prediction": "1",
+	  "zone": "calda",
+      "Tip": "underdog in buona forma"
     }
   ]
 }
