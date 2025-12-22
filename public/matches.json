@@ -6,31 +6,15 @@
       "away": "Jong AZ",
       "Prediction": "1",
 	  "zone": "calda",
-      "Tip": "Jong AZ, difesa e portiere debole"
+      "Tip": ""
     },
 	{
       "Data": "2025-12-20",
-	  "home": "VfL Wolfsburg",
-      "away": "SC Freiburg",
+	  "home": "Frosinone",
+      "away": "Spezia",
       "Prediction": "1",
 	  "zone": "calda",
-      "Tip": "ottima quota, buon attacco underdog e buon portiere"
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "Harrogate Town",
-      "away": "Milton Keynes Dons",
-      "Prediction": "1",
-	  "zone": "calda",
-      "Tip": "ottima quota, buon attacco underdog"
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "Padova",
-      "away": "Sampdoria",
-      "Prediction": "1",
-	  "zone": "buona",
-      "Tip": "ottima quota"
+      "Tip": ""
     },
 	{
       "Data": "2025-12-20",
@@ -41,44 +25,36 @@
       "Tip": "attacco casa sterile"
     },
 	{
-      "Data": "2025-12-20",
-	  "home": "GIL Vicente",
-      "away": "Rio Ave",
+      "Data": "2025-12-21",
+	  "home": "Mirandes",
+      "away": "Cordoba",
       "Prediction": "2",
-	  "zone": "warning",
-      "Tip": "attacco casa sterile"
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "Las Palmas",
-      "away": "Cultural Leonesa",
-      "Prediction": "2",
-	  "zone": "warning",
-      "Tip": "attacco casa sterile ma difesa solida"
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "Bandirmaspor",
-      "away": "Erzurum BB",
-      "Prediction": "1",
 	  "zone": "buona",
-      "Tip": "attacco Erzurum sterile"
+      "Tip": ""
+    },
+	{
+      "Data": "2025-12-21",
+	  "home": "Girona",
+      "away": "Atl Madrid",
+      "Prediction": "2",
+	  "zone": "calda",
+      "Tip": ""
+    },
+	{
+      "Data": "2025-12-21",
+	  "home": "Sassuolo",
+      "away": "Torino",
+      "Prediction": "1",
+	  "zone": "calda",
+      "Tip": ""
     },
 	{
       "Data": "2025-12-21",
 	  "home": "Club Brugge KV",
       "away": "Gent",
-      "Prediction": "2",
-	  "zone": "no bet",
-      "Tip": "favorita solida"
-    },
-	{
-      "Data": "2025-12-21",
-	  "home": "OH Leuven",
-      "away": "Cercle Brugge",
       "Prediction": "1",
 	  "zone": "calda",
-      "Tip": "underdog in buona forma"
+      "Tip": ""
     }
   ]
 }

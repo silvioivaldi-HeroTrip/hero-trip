@@ -45,5 +45,56 @@
         "title": "Vincita"
       }
     ]
+  },
+  {
+    "id": "2025-12-19",
+    "label": "Weekend 19–22 Dicembre 2025",
+    "analyzed": 400,
+    "selected": 7,
+    "wins": 6,
+    "losses": 1,
+    "stake": 10,
+    "invested": 70,
+    "return": 114,
+    "profit": 44,
+    "roi": 63,
+	"netProfit": 44,
+    "avgOdds": 1.90,
+    "maxOdds": 2.4,
+    "images": [
+      {
+        "file": "Tips2.png",
+        "title": "TIPS",
+		"main": true
+      },
+	  {
+        "file": "Sassuolo Torino.png",
+        "title": "Sassuolo Torino"
+      },
+      {
+        "file": "Eindhoven Jong AZ.png",
+        "title": "Eindhoven Jong AZ"
+      },
+      {
+        "file": "Mirandes Cordoba.png",
+        "title": "Mirandes Cordoba"
+      },
+	  {
+        "file": "Frosinone Spezia.png",
+        "title": "Frosinone Spezia"
+      }
+	   {
+        "file": "Thun Zurigo.png",
+        "title": "Thun Zurigo"
+      }
+	   {
+        "file": "Club Brugge Gent.png",
+        "title": "Club Brugge Gent"
+      }
+	   {
+        "file": "Girona Atl Madrid.png",
+        "title": "Girona Atl Madrid"
+      }
+    ]
   }
 ]
