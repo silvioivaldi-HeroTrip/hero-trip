@@ -63,7 +63,12 @@
     "maxOdds": 2.4,
     "images": [
       {
-        "file": "Tips2.png",
+        "file": "Tips2.jpeg",
+        "title": "TIPS",
+		"main": true
+      },
+	  {
+        "file": "Tips2_1.jpeg",
         "title": "TIPS",
 		"main": true
       },
