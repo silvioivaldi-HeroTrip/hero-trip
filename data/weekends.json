@@ -119,18 +119,13 @@
     "maxOdds": 2.4,
     "images": [
       {
-        "file": "tip3.jpeg",
+        "file": "tip3.png",
         "title": "ChelseaAstonVilla",
 		"main": true
       },
 	   {
-        "file": "tip4.jpeg",
+        "file": "tip4.png",
         "title": "UdineseLazio",
-		"main": true
-      },
-	   {
-        "file": "Tip5.jpeg",
-        "title": "ChelseaAstonVilla",
 		"main": true
       },
 	  {
@@ -142,7 +137,7 @@
         "title": "Chelsea Aston Villa"
       },
 	  {
-        "file": "bet1.png",
+        "file": "bet1.jpeg",
         "title": "betX"
       },
 	  {
