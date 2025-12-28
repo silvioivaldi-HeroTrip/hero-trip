@@ -1,60 +1,20 @@
 {
   "matches": [
     {
-      "Data": "2025-12-19",
-	  "home": "FC Eindhoven",
-      "away": "Jong AZ",
+      "Data": "2025-12-27",
+	  "home": "Udinese",
+      "away": "Lazio",
+      "Prediction": "X",
+	  "zone": "calda",
+      "Tip": "Cigno da blocco.... possibile 1-1 o 2-2"
+    },
+	{
+      "Data": "2025-12-27",
+	  "home": "Chelsea",
+      "away": "Aston Villa",
       "Prediction": "1",
 	  "zone": "calda",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "Frosinone",
-      "away": "Spezia",
-      "Prediction": "1",
-	  "zone": "calda",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-20",
-	  "home": "FC Thun",
-      "away": "FC Zurich",
-      "Prediction": "1",
-	  "zone": "buona",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-21",
-	  "home": "Mirandes",
-      "away": "Cordoba",
-      "Prediction": "2",
-	  "zone": "buona",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-21",
-	  "home": "Girona",
-      "away": "Atl Madrid",
-      "Prediction": "2",
-	  "zone": "calda",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-21",
-	  "home": "Sassuolo",
-      "away": "Torino",
-      "Prediction": "1",
-	  "zone": "calda",
-      "Tip": ""
-    },
-	{
-      "Data": "2025-12-21",
-	  "home": "Club Brugge KV",
-      "away": "Gent",
-      "Prediction": "1",
-	  "zone": "calda",
-      "Tip": ""
+      "Tip": "Cigno squlibrato, over e vittoria"
     }
   ]
 }

@@ -101,5 +101,54 @@
         "title": "Girona Atl Madrid"
       }
     ]
+  },
+  {
+    "id": "2025-12-27",
+    "label": "Weekend 27–29 Dicembre 2025",
+    "analyzed": 400,
+    "selected": 6,
+    "wins": 6,
+    "losses": 1,
+    "stake": 10,
+    "invested": 60,
+    "return": 114,
+    "profit": 44,
+    "roi": 63,
+	"netProfit": 44,
+    "avgOdds": 1.90,
+    "maxOdds": 2.4,
+    "images": [
+      {
+        "file": "tip3.jpeg",
+        "title": "ChelseaAstonVilla",
+		"main": true
+      },
+	   {
+        "file": "tip4.jpeg",
+        "title": "UdineseLazio",
+		"main": true
+      },
+	   {
+        "file": "Tip5.jpeg",
+        "title": "ChelseaAstonVilla",
+		"main": true
+      },
+	  {
+        "file": "Udinese Lazio.png",
+        "title": "Udinese Lazio"
+      },
+      {
+        "file": "Chelsea Aston Villa.png",
+        "title": "Chelsea Aston Villa"
+      },
+	  {
+        "file": "bet1.png",
+        "title": "betX"
+      },
+	  {
+        "file": "bet2.jpeg",
+        "title": "Combo"
+      }
+    ]
   }
 ]
