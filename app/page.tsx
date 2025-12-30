@@ -14,7 +14,13 @@ export default function Home() {
             width={1200}
             height={800}
             priority
-            className="rounded-lg shadow-2xl"
+            className="
+              mx-auto
+              max-w-[75%]
+              rounded-lg
+              shadow-2xl
+              opacity-85
+            "
           />
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
