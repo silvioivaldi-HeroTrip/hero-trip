@@ -14,38 +14,24 @@ export default function Home() {
             width={1200}
             height={800}
             priority
-            className="
-              mx-auto
-              max-w-[75%]
-              rounded-lg
-              shadow-2xl
-              opacity-85
-            "
+            className="mx-auto max-w-[70%] rounded-lg shadow-2xl opacity-90"
           />
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            It’s not a matter of xG.
+            Non prevediamo risultati.
           </h1>
 
-          <p className="text-xl md:text-2xl text-neutral-300 max-w-2xl">
-            Alcune partite non si giocano.<br />
-            <span className="text-neutral-100 font-semibold">
-              Falliscono.
-            </span>
+          <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl">
+            Rileviamo quando i sistemi si rompono.
           </p>
 
-          <a
-            href="#early-access"
-            className="mt-6 inline-block rounded-full bg-neutral-100 px-8 py-4 text-lg font-semibold text-neutral-900 hover:bg-neutral-200 transition"
-          >
-            Segui il progetto
-          </a>
         </div>
       </section>
 
-      {/* TRANSIZIONE */}
+      {/* MANIFESTO */}
       <section className="py-24 px-6 bg-neutral-900">
         <div className="max-w-3xl mx-auto text-center space-y-8">
+
           <p className="text-xl md:text-2xl">
             Se pensi che il calcio sia una questione di stime,
             probabilità o modelli onniscienti,
@@ -54,46 +40,49 @@ export default function Home() {
 
           <p className="text-xl md:text-2xl">
             <span className="font-semibold">Cigni Neri</span> è una lente strutturale.<br />
-            Non prevede risultati.<br />
-            <span className="font-semibold">Classifica il fallimento.</span>
+            Non indovina.<br />
+            <span className="font-semibold">Osserva il fallimento.</span>
           </p>
+
         </div>
       </section>
 
-      {/* COME LAVORIAMO */}
+      {/* METODO */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
           <div className="space-y-6 text-lg text-neutral-300">
             <h2 className="text-3xl font-bold text-neutral-100">
-              Come leggiamo le partite
+              Il nostro metodo
             </h2>
 
             <p>
-              Dietro ogni classificazione c’è una lettura strutturale.
+              Non cerchiamo valore ovunque.
             </p>
 
             <p>
-              Lavoriamo <span className="font-semibold text-neutral-100">solo</span> su dati
-              forniti come testo strutturato.
+              Lavoriamo solo quando una partita
+              <span className="font-semibold text-neutral-100">
+                {" "}perde la propria struttura.
+              </span>
             </p>
 
             <p>
-              Nessuna memoria.<br />
-              Nessuna ipotesi.<br />
-              Nessun confronto esterno.
+              Nessuna previsione.<br />
+              Nessuna narrativa forzata.<br />
+              Nessuna continuità artificiale.
             </p>
 
             <p className="font-semibold text-neutral-100">
-              Se non emerge un evento raro,<br />
-              non forziamo l’output.
+              Se non emerge nulla,<br />
+              non pubblichiamo nulla.
             </p>
           </div>
 
           <div className="flex justify-center">
             <Image
-              src="/genius-tip.png"
-              alt="Genius Tip"
+              src="/genius.png"
+              alt="Genius"
               width={420}
               height={420}
               className="rounded-xl"
@@ -102,54 +91,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CIGNI NERI */}
+      {/* CIGNI */}
       <section className="py-24 px-6 bg-neutral-900">
         <div className="max-w-4xl mx-auto space-y-10 text-center">
 
           <h2 className="text-3xl font-bold">
-            Cigni Neri
+            I Cigni
           </h2>
 
-          <p className="text-xl text-neutral-300">
-            Non tutti i match producono un evento raro.<br />
-            Noi cerchiamo solo quelli che
-            <span className="font-semibold text-neutral-100">
-              {" "}falliscono strutturalmente.
-            </span>
-          </p>
+          <ul className="space-y-6 text-lg text-neutral-300">
+            <li>
+              🦢 <span className="font-semibold text-neutral-100">Cigno di Blocco</span><br />
+              La tensione cresce ma non esplode.<br />
+              <span className="text-neutral-400">Equilibrio. Pareggio.</span>
+            </li>
 
-          <ul className="space-y-4 text-lg text-neutral-300">
-            <li>🦢 <span className="font-semibold text-neutral-100">Cigno di Blocco</span> — la tensione cresce ma non si rompe</li>
-            <li>🦢 <span className="font-semibold text-neutral-100">Cigno di Collasso Totale</span> — una volta sbloccata, la partita muore</li>
-            <li>Massimo <span className="font-semibold text-neutral-100">2 per giornata</span></li>
-            <li>A volte <span className="font-semibold text-neutral-100">nessuno</span></li>
+            <li>
+              🦢 <span className="font-semibold text-neutral-100">Cigno di Collasso Totale</span><br />
+              Una volta sbloccata, la partita muore.<br />
+              <span className="text-neutral-400">
+                Non importa chi vince. Importano i gol.
+              </span>
+            </li>
+
+            <li>
+              Massimo <span className="font-semibold text-neutral-100">2 eventi per giornata</span>
+            </li>
+
+            <li>
+              A volte <span className="font-semibold text-neutral-100">nessuno</span>
+            </li>
           </ul>
 
           <p className="text-lg font-semibold text-neutral-100">
-            L’assenza di output è parte del metodo.
+            L’assenza di output e i possibili errori<br />
+            fanno parte del nostro metodo.
           </p>
         </div>
       </section>
 
-      {/* EARLY ACCESS */}
-      <section
-        id="early-access"
-        className="py-32 px-6"
-      >
+      {/* CTA */}
+      <section id="early-access" className="py-32 px-6">
         <div className="max-w-xl mx-auto text-center space-y-10">
 
           <h2 className="text-3xl font-bold">
-            Accesso anticipato
+            Unisciti a noi
           </h2>
 
           <p className="text-lg text-neutral-300">
-            Cigni Neri non è un prodotto finito,<br />
-            ma una lente in fase di esposizione.
-          </p>
-
-          <p className="text-lg text-neutral-300">
-            Se vuoi seguirne l’evoluzione,<br />
-            lascia la tua email.
+            Cigni Neri è in fase alpha.<br />
+            Non promettiamo certezze.
           </p>
 
           <form className="flex flex-col gap-4">
@@ -161,22 +152,24 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="rounded-md bg-neutral-100 px-6 py-3 font-semibold text-neutral-900 hover:bg-neutral-200 transition"
+              className="rounded-md bg-neutral-100 px-6 py-4 text-lg font-bold text-neutral-900 hover:bg-neutral-200 transition"
             >
-              Entra nell’alpha
+              Unisciti a noi
             </button>
           </form>
 
-          <p className="text-sm text-neutral-400">
+          <p className="text-base font-semibold text-neutral-200">
             –50% il primo mese.<br />
-            Non come sconto, ma come patto.
+            Non come sconto.<br />
+            Come patto.
           </p>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-12 text-center text-neutral-500 text-sm">
-        Se cerchi certezze, questo non è il posto giusto.
+      {/* DISCLAIMER */}
+      <footer className="py-12 text-center text-neutral-500 text-sm max-w-3xl mx-auto">
+        Questo progetto non fornisce consigli di gioco.
+        È un esperimento concettuale sulla lettura strutturale degli eventi.
       </footer>
 
     </main>
