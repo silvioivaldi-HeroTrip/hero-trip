@@ -82,7 +82,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <Image
-              src="/genius.png"
+              src="/Genius.png"
               alt="Genius"
               width={420}
               height={420}
