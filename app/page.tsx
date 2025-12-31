@@ -10,7 +10,7 @@ export default function Home() {
         <div className="max-w-5xl w-full flex flex-col items-center text-center gap-10">
 
           <Image
-            src="/quantum-trip.png"
+            src="/images/landingpage.png"
             alt="Quantum Trip"
             width={1200}
             height={800}
@@ -82,7 +82,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <Image
-              src="/Genius.png"
+              src="/images/Genius.png"
               alt="Genius"
               width={420}
               height={420}
