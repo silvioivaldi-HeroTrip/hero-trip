@@ -169,7 +169,7 @@ export default function Home() {
       {/* DISCLAIMER */}
       <footer className="py-12 text-center text-neutral-500 text-sm max-w-3xl mx-auto">
         Questo progetto non fornisce consigli di gioco.
-        È un esperimento concettuale sulla lettura strutturale degli eventi.
+        È un esperimento sulla lettura strutturale degli eventi.
       </footer>
 
     </main>
