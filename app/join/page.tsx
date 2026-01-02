@@ -17,6 +17,9 @@ export default function JoinPage() {
   const [privacyOk, setPrivacyOk] = useState(false);
   const [disclaimerOk, setDisclaimerOk] = useState(false);
 
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +36,7 @@ export default function JoinPage() {
         privacy_accepted_at: privacyOk ? now : null,
         disclaimer_accepted_at: disclaimerOk ? now : null,
         privacy_version: "v1",
-        disclaimer_version: "v1"
+        disclaimer_version: "v1",
       },
     ]);
 
@@ -61,10 +64,7 @@ export default function JoinPage() {
           Registrazione completata 🦢
         </p>
       ) : (
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-sm space-y-6"
-        >
+        <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-6">
           <input
             type="email"
             placeholder="Email"
@@ -75,16 +75,17 @@ export default function JoinPage() {
           />
 
           {/* PRIVACY */}
-          <div className="text-sm text-neutral-300 space-y-2">
-            <a
-              href="/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-neutral-100"
-              onClick={() => setPrivacyViewed(true)}
+          <div className="text-sm space-y-2">
+            <button
+              type="button"
+              className="underline text-neutral-300 hover:text-white"
+              onClick={() => {
+                setShowPrivacy(true);
+                setPrivacyViewed(true);
+              }}
             >
               Leggi la Privacy Policy
-            </a>
+            </button>
 
             <label className="flex items-start gap-2">
               <input
@@ -95,11 +96,11 @@ export default function JoinPage() {
                 onChange={(e) => setPrivacyOk(e.target.checked)}
                 className="mt-1"
               />
-              <span>
+              <span className="text-neutral-300">
                 Accetto la Privacy Policy
                 {!privacyViewed && (
                   <span className="text-neutral-500">
-                    {" "} (aprila per continuare)
+                    {" "} (leggila per continuare)
                   </span>
                 )}
               </span>
@@ -107,16 +108,17 @@ export default function JoinPage() {
           </div>
 
           {/* DISCLAIMER */}
-          <div className="text-sm text-neutral-300 space-y-2">
-            <a
-              href="/disclaimer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-neutral-100"
-              onClick={() => setDisclaimerViewed(true)}
+          <div className="text-sm space-y-2">
+            <button
+              type="button"
+              className="underline text-neutral-300 hover:text-white"
+              onClick={() => {
+                setShowDisclaimer(true);
+                setDisclaimerViewed(true);
+              }}
             >
               Leggi il Disclaimer
-            </a>
+            </button>
 
             <label className="flex items-start gap-2">
               <input
@@ -127,11 +129,11 @@ export default function JoinPage() {
                 onChange={(e) => setDisclaimerOk(e.target.checked)}
                 className="mt-1"
               />
-              <span>
+              <span className="text-neutral-300">
                 Accetto il Disclaimer
                 {!disclaimerViewed && (
                   <span className="text-neutral-500">
-                    {" "} (aprilo per continuare)
+                    {" "} (leggilo per continuare)
                   </span>
                 )}
               </span>
@@ -152,6 +154,48 @@ export default function JoinPage() {
           )}
         </form>
       )}
+
+      {/* MODAL PRIVACY */}
+      {showPrivacy && (
+        <Modal onClose={() => setShowPrivacy(false)} title="Privacy Policy">
+          <iframe src="/privacy" className="w-full h-[70vh]" />
+        </Modal>
+      )}
+
+      {/* MODAL DISCLAIMER */}
+      {showDisclaimer && (
+        <Modal onClose={() => setShowDisclaimer(false)} title="Disclaimer">
+          <iframe src="/disclaimer" className="w-full h-[70vh]" />
+        </Modal>
+      )}
     </main>
+  );
+}
+
+/* MODAL COMPONENT */
+function Modal({
+  title,
+  children,
+  onClose,
+}: {
+  title: string;
+  children: React.ReactNode;
+  onClose: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4">
+      <div className="bg-neutral-900 text-neutral-100 w-full max-w-3xl rounded-lg shadow-lg overflow-hidden">
+        <div className="flex justify-between items-center px-4 py-3 border-b border-neutral-700">
+          <h2 className="font-bold">{title}</h2>
+          <button
+            onClick={onClose}
+            className="text-neutral-400 hover:text-white"
+          >
+            ✕
+          </button>
+        </div>
+        <div className="p-4">{children}</div>
+      </div>
+    </div>
   );
 }
