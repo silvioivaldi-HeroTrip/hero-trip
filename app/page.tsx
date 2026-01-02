@@ -1,5 +1,6 @@
 export const revalidate = 0;
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -131,7 +132,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — MODIFICATA */}
       <section id="early-access" className="py-32 px-6">
         <div className="max-w-xl mx-auto text-center space-y-10">
 
@@ -144,20 +145,12 @@ export default function Home() {
             Non promettiamo certezze.
           </p>
 
-          <form className="flex flex-col gap-4">
-            <input
-              type="email"
-              placeholder="la tua email"
-              className="rounded-md px-4 py-3 text-neutral-900"
-              required
-            />
-            <button
-              type="submit"
-              className="rounded-md bg-neutral-100 px-6 py-4 text-lg font-bold text-neutral-900 hover:bg-neutral-200 transition"
-            >
-              Unisciti a noi
-            </button>
-          </form>
+          <Link
+            href="/join"
+            className="rounded-md bg-neutral-100 px-6 py-4 text-lg font-bold text-neutral-900 hover:bg-neutral-200 transition inline-block"
+          >
+            Unisciti a noi
+          </Link>
 
           <p className="text-base font-semibold text-neutral-200">
             –50% il primo mese.<br />
