@@ -4,8 +4,8 @@ import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  "https://srjkxemlpuvmwnwxetlh.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 export default function JoinPage() {
