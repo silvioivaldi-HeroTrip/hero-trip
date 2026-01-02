@@ -33,7 +33,7 @@ export default function JoinPage() {
         privacy_accepted_at: privacyOk ? now : null,
         disclaimer_accepted_at: disclaimerOk ? now : null,
         privacy_version: "v1",
-        disclaimer_version: "v1",
+        disclaimer_version: "v1"
       },
     ]);
 
